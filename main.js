@@ -127,6 +127,5 @@ var Core;
 	})();
 	Core.FacebookUtils = FacebookUtils;
 
-
 })	// End of Core Declaration
 (Core || ( Core = {} ));
