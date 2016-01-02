@@ -4,6 +4,12 @@
 	width: 300px;
 }
 
+.fontSliderContainer{
+  text-align: center;
+  width: 300px;
+  display: none;
+}
+
 .twitterButton{
 	margin-top: 5px;
 }
@@ -31,6 +37,35 @@
 
 .spinner-loader{
   position: absolute;
+  display: none;
+}
+
+.postToFacebook{
+  padding-top: 10px;
+  display: none;
+}
+
+/* Loading Overlay */
+#overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+#loading {
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -27px 0 0 -122px;
+    font-size: 20px;
+    color:#000000;
+    background: #ffffff;
+    border:1px solid gray;
 }
 
 

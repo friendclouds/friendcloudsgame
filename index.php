@@ -26,14 +26,23 @@
 
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
+  <script type="text/javascript">
+    var redirect = function(){
+        var url = window.location.href;
+        if(url.indexOf("friendclouds") == -1 || url.indexOf("https") == -1)
+        {
+          window.location = "https://friendclouds.temptzone.com";
+        }
+    }
+  </script>
 </head>
-<body>
+<body onload="redirect();">
 
 <div id="fb-root"></div>
 
@@ -42,30 +51,44 @@
 <div class="container">
   <h4 class="section-heading">Friend Clouds - An amazing swarm of friend names</h4>
 
+  <div class="postToFacebook">
+    <button class="button-primary" onclick="Core.FacebookUtils.shareOnFacebook();">Post on Facebook</button>
+  </div>
+  
+
   <div id="cloudContainer" class="cloudContainer">
   	<div class="spinner-loader">
-	  Loading…
-	</div>
+  	  Loading…
+  	</div>
   </div>
 
-  <div class="fb-login-button facebookLoginButton" onlogin="Core.FacebookUtils.checkLoginState();" data-scope="user_friends" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div>
-  <br />
-  <br />
+  <div class="postToFacebook">
+    <button class="button-primary" onclick="Core.FacebookUtils.shareOnFacebook();">Post on Facebook</button>
+  </div>
 
-  <button onclick="shareOnFacebook();">Share on Facebook</button>
+  <div class="container fontSliderContainer">
+    <div class="row">
+      <div class="one-third column">Name Size: </div>
+      <input class="two-thirds column" id="fontSlider" type="range" name="points" min="1" max="100" onchange="Core.UIUtils.onFontSizeChanged();" />
+    </div>
+  </div>
+
+  <div class="fb-login-button facebookLoginButton" onlogin="Core.FacebookUtils.checkLoginState();" data-scope="user_friends,publish_actions" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false"></div>
+  <br />
+  <br />
   	
   <div class="container socialSection">
   	<div class="row">
-	  	<div class="one-third column">
-	  		<div class="fb-share-button" data-href="https://friendclouds.net/" data-layout="button_count"></div>
+      <div class="one-third column">
+	  		<div class="fb-share-button" data-href="https://friendclouds.temptzone.com/" data-layout="button_count"></div>
 	    </div>
 	    <div class="one-third column twitterButton">
-		  	<a href="https://twitter.com/share" class="twitter-share-button"{count} data-via="temptzone">Tweet</a>
-		</div>
-		<div class="one-third column gPlusButton">
-			<!-- Place this tag where you want the +1 button to render. -->
-      <div class="g-plusone" data-annotation="inline" data-width="120" data-href="https://friendcloud.net"></div>
-		</div>
+  		  	<a href="https://twitter.com/share" class="twitter-share-button"{count} data-via="temptzone">Tweet</a>
+  		</div>
+  		<div class="one-third column gPlusButton">
+  			<!-- Place this tag where you want the +1 button to render. -->
+        <div class="g-plusone" data-annotation="inline" data-width="120" data-href="https://friendclouds.temptzone.com"></div>
+  		</div>
 	  </div>
   </div>
   
@@ -75,6 +98,7 @@
   	<p>
   </div>
 
+  <!--<img id="clementine" src="images/Clementine.jpg" />-->
 </div>
 
 <script src="lib/jquery-2.0.3/build/jquery.js"></script>
@@ -83,7 +107,8 @@
 <script src="lib/react-0.8.0/build/react.js"></script>
 <script src="lib/react-0.8.0/build/JSXTransformer.js"></script>
 <script src="lib/d3/d3.js"></script>
-<script src="lib/saveSvgAsPng/saveSvgAsPng.js"></script>
+<script src="lib/base64binary/base64-binary.js"></script>
+<script src="lib/canvg/canvg.js"></script>
 <script src="d3.layout.cloud.js"></script>
 <script src="main.js"></script>
 
@@ -91,18 +116,7 @@
 <!-- Facebook Implementation -->
 <script type="text/jsx">
 
-	
 	Core.UIUtils.initialise();
-
-  var shareOnFacebook = function(){
-
-    FB.ui({
-      method: 'feed',
-      picture: 'https://developers.facebook.com/images/devsite/fb4d_logo-2x.png',
-      link: 'https://developers.facebook.com/docs/',
-      caption: 'An example caption',
-    }, function(response){});
-  }
 
 	window.fbAsyncInit = function() {
 		console.log("fbAsyncInit");
@@ -111,13 +125,6 @@
         Core.FacebookUtils.checkLoginState();
       };
 
-	(function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, "script", "facebook-jssdk"));
 </script>
 
 <!-- Twitter Implementation -->
@@ -127,6 +134,29 @@
 <!-- Place this tag in your head or just before your close body tag. -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+<!-- Facebook Scripts -->
+<script type="text/javascript">
+  /* Facebook Scripts */
+  (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, "script", "facebook-jssdk"));
+</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38769596-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
