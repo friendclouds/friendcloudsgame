@@ -71,14 +71,14 @@
   <div class="container socialSection">
   	<div class="row">
       <div class="one-third column">
-	  		<div class="fb-share-button" data-layout="button_count"></div>
+	  		<div class="fb-share-button" data-href="https://apps.facebook.com/friendcloudsgame/" data-layout="button_count"></div>
 	    </div>
 	    <div class="one-third column twitterButton">
-  		  	<a href="https://twitter.com/share" class="twitter-share-button"{count}>Tweet</a>
+          <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="https://apps.facebook.com/friendcloudsgame/">Tweet</a>
   		</div>
   		<div class="one-third column gPlusButton">
   			<!-- Place this tag where you want the +1 button to render. -->
-        <div class="g-plusone" data-annotation="inline" data-width="120"></div>
+        <div class="g-plusone" data-annotation="inline" data-width="120" data-href="https://apps.facebook.com/friendcloudsgame"></div>
   		</div>
 	  </div>
   </div>
