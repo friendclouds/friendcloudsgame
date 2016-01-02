@@ -31,16 +31,7 @@
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-
-  <script type="text/javascript">
-    var redirect = function(){
-        var url = window.location.href;
-        if(url.indexOf("friendclouds") == -1 || url.indexOf("https") == -1)
-        {
-          window.location = "https://friendclouds.temptzone.com";
-        }
-    }
-  </script>
+  
 </head>
 <body onload="redirect();">
 
@@ -94,7 +85,7 @@
   
   <div class="container footer">
   	<p>
-  		&copy; All rights reserved. <a href="#">Friend Clouds</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Privacy Policy</a>&nbsp;|&nbsp;<a href="#">Terms of Use</a>
+  		&copy; All rights reserved. <strong>Tempt Zone</strong>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Privacy Policy</a>&nbsp;|&nbsp;<a href="#">Terms of Use</a>
   	<p>
   </div>
 
@@ -153,7 +144,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-38769596-6', 'auto');
+  ga('create', 'UA-38769596-7', 'auto');
   ga('send', 'pageview');
 
 </script>
